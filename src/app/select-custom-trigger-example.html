@@ -1,0 +1,41 @@
+<mat-form-field appearance="fill">
+  <mat-label>Toppings</mat-label>
+  <!-- ORIGINAL CODE -->
+  <!-- <mat-select [formControl]="toppings" multiple>
+    <mat-select-trigger>
+      {{toppings.value?.[0] || ''}}
+      <span *ngIf="(toppings.value?.length || 0) > 1" class="example-additional-selection">
+        (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
+      </span>
+    </mat-select-trigger>
+    <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+  </mat-select> -->
+
+  <!-- EDITED CODE -->
+  <mat-select [formControl]="toppings" multiple>
+  <mat-select-trigger>
+      {{toppings.value?.[0] || ''}}
+      <span *ngIf="(toppings.value?.length || 0) > 1" class="example-additional-selection">
+        (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
+      </span>
+    </mat-select-trigger>
+    
+    <mat-optgroup [label]="'Pizza ingredients'" [disabled]="false">
+    <mat-option *ngFor="let ingredient of pizzaIngredients" [value]="ingredient">{{ingredient}}</mat-option>
+    </mat-optgroup>
+
+    <mat-optgroup [label]="'Pasta ingredients'" [disabled]="false">
+    <mat-option *ngFor="let ingredient of pastaIngredients" [value]="ingredient">{{ingredient}}</mat-option>
+    </mat-optgroup>
+
+
+
+  </mat-select>
+
+
+</mat-form-field>
+
+
+<!-- Copyright 2022 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at https://angular.io/license -->
